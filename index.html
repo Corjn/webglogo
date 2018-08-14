@@ -5,64 +5,44 @@
     <meta charset="utf-8">
     <title>Logo Corjn</title>
     <style>
-	
       html {
-		background: black;
         box-sizing: border-box;
-	}
-			
+      }
       *, *:before, *:after {
         box-sizing: inherit;
-    }
-	  
+      }
       body {
         margin: 0;
-        background: black;
-		overflow-x:hidden;
-		overflow-y:hidden;
-	}
-			
+        background: #444;
+      }
       #gameContainer {
-		background: black;
         width: 100vw;
         height: 100vh;
-    }
-	
+      }
       canvas {
-		background: black;
         width: 100%;
         height: 100%;
         display: block;
-    }
+      }
 
       .logo {
-		position: center;
-	    left: 0;
-        top: 0;
-        width: max-width: 100vw;
-        height: 100vh;
-		align-items: center;
-		display: flex;
-        justify-content: center;
-		flex-direction: center;
-		align-items: center;
-		justify-content: center;
-    }
+          display: block;
+          width: max-width: 100vw;
+          height: max-height: 70vh;
+      }
 
       .progress {
-		position: absolute;
-		top: 80%;
-        border: 1px solid white;
-        width: 10vw;
-		
-        display: none;
-    }
-	
+          margin: 1.5em;
+          border: 1px solid white;
+          width: 50vw;
+          display: none;
+      }
       .progress .full {
+          margin: 2px;
           background: white;
-          height: 0.3em;
+          height: 1em;
           transform-origin: top left;
-    }
+      }
 
       #loader {
         position: absolute;
@@ -74,19 +54,18 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    }
+      }
 
       .spinner,
       .spinner:after {
         border-radius: 50%;
         width: 5em;
         height: 5em;
-    }
-	  
+      }
       .spinner {
-		top: 80%;
+        margin: 10px;
         font-size: 10px;
-        position: absolute;
+        position: relative;
         text-indent: -9999em;
         border-top: 1.1em solid rgba(255, 255, 255, 0.2);
         border-right: 1.1em solid rgba(255, 255, 255, 0.2);
@@ -94,16 +73,15 @@
         border-left: 1.1em solid #ffffff;
         transform: translateZ(0);
         animation: spinner-spin 1.1s infinite linear;
-    }
-	
+      }
       @keyframes spinner-spin {
         0% {
           transform: rotate(0deg);
-		}
+        }
         100% {
           transform: rotate(360deg);
         }
-    }
+      }
 
     </style>
   </head>
@@ -119,7 +97,7 @@
 
   <script src="Build/UnityLoader.js"></script>
   <script>
-  var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Prototypes.json", {onProgress: UnityProgress});
+  var gameInstance = UnityLoader.instantiate("gameContainer", "Build/public.json", {onProgress: UnityProgress});
   function UnityProgress(gameInstance, progress) {
     if (!gameInstance.Module) {
       return;
